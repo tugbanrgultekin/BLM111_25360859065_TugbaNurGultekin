@@ -7,7 +7,7 @@
 int secenek;
 void serbest_dusme_d(float);
 void yukari_atis_d(float);
-void agirlik_d();
+void agirlik_d(float);
 void kutlecekim_potansiyel_d(float, float);
 void hidrostatik_basinc_d(float, float);
 void arsimet_kaldirma_kuvveti_d(float, float);
