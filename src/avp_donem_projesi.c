@@ -193,7 +193,7 @@ void serbest_dusme_d(float t){
 
     for(int i=0; i<8; i++){
     float yukseklik= *(yercekimi_ivmesi+i) * t * t *0.5;
-    printf("%s icin deney sonucu:%.2f Metre\n ",*(gezegenler+i),yukseklik);
+    printf("%s icin kat ettigi yol %.2f Metre\n ",*(gezegenler+i),yukseklik);
     }
 
 }
@@ -202,7 +202,7 @@ void yukari_atis_d(float v0){
 
     for(int i=0; i<8; i++){
         float max_yukseklik=(v0 * v0) * 0.5 / *(yercekimi_ivmesi+i);
-        printf("%s icin deney sonucu:%.2f Metre\n ",*(gezegenler+i),max_yukseklik);
+        printf("%s icin cismin maksimum cikabilecegi yukseklik %.2f Metre\n ",*(gezegenler+i),max_yukseklik);
     }
 
 }
@@ -211,7 +211,7 @@ void agirlik_d(float m){
 
      for(int i=0; i<8; i++){
         float cisim_agirlik = *(yercekimi_ivmesi+i) * m;
-        printf("%s icin deney sonucu:%.2f Newton\n",(gezegenler+i),cisim_agirlik);
+        printf("%s icin cismin agirligi %.2f Newton\n",(gezegenler+i),cisim_agirlik);
      }
 
 }
@@ -220,7 +220,7 @@ void kutlecekim_potansiyel_d(float m, float h){
 
     for(int i=0; i<8; i++){
         float kutlesel_pot_enerji = *(yercekimi_ivmesi +i)* m * h;
-        printf("%s icin deney sonucu:%.2f Joule\n",*(gezegenler+i),kutlesel_pot_enerji);
+        printf("%s icin cismin kutlecekimsel potansiyel enerjisi %.2f Joule\n",*(gezegenler+i),kutlesel_pot_enerji);
     }
 
 }
@@ -229,7 +229,7 @@ void hidrostatik_basinc_d(float rho, float h){
 
     for(int i=0; i<8; i++){
         float hidrostatik_basinc= *(yercekimi_ivmesi+i) * rho * h;
-        printf("%s icin deney sonucu:%.2f Pascal\n",*(gezegenler+i),hidrostatik_basinc);
+        printf("%s icin yuzeyine uyguladigi hidrostatik basinc %.2f Pascal\n",*(gezegenler+i),hidrostatik_basinc);
     }
 
 }
@@ -238,7 +238,7 @@ void arsimet_kaldirma_kuvveti_d(float rho, float V){
 
     for(int i=0; i<8; i++){
         float kaldirma_kuvveti= *(yercekimi_ivmesi+i) * rho * V;
-        printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),kaldirma_kuvveti);
+        printf("%s icin kaldirma kuvveti %.2f Newton\n",*(gezegenler+i),kaldirma_kuvveti);
     }
 
 }
@@ -246,7 +246,7 @@ void basit_sarkac_periyodu_d(float L){
 
      for(int i=0; i<8; i++){
         float gecen_sure=2*PI*sqrt(L/ *(yercekimi_ivmesi+i));
-        printf("%s icin deney sonucu:%.2f Saniye\n",*(gezegenler+i),gecen_sure);
+        printf("%s icin gecen sure %.2f Saniye\n",*(gezegenler+i),gecen_sure);
      }
 
 }
@@ -255,7 +255,7 @@ void sabit_ip_gerilmesi_d(float m){
 
     for(int i=0; i<8; i++){
         float gerilme_kuvveti = *(yercekimi_ivmesi+i) * m;
-        printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),gerilme_kuvveti);
+        printf("%s icin ipin gerilme kuvveti %.2f Newton\n",*(gezegenler+i),gerilme_kuvveti);
     }
 
 }
@@ -264,6 +264,7 @@ void asansor_d(float m, float a){
     for(int i=0; i<8; i++){
         float etkin_agirlik = a >= 0 ? m * (*(yercekimi_ivmesi+i) + a) : m * (*(yercekimi_ivmesi+i) - (-a));
 
-        printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),etkin_agirlik);
+        printf("%s icin hissedilen agirlik %.2f Newton\n",*(gezegenler+i),etkin_agirlik);
     }
 }
+
