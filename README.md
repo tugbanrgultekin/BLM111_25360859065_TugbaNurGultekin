@@ -2,7 +2,7 @@
 - *Ad/Soyad: Tuğba Nur Gültekin*
 - *Numara: 25360859065*
 - *Bölüm: Bilgisayar Mühendisliği*
-- *Ders: Algoritma ve Programlama* 
+- *Ders Adı: Algoritma ve Programlama* 
 - *Öğretim Üyesi: Dç. Dr. Ergün Gümüş*
 - *Proje Konusu: Deney Hesaplamaları Programı*
-- *Okul: BURSA TEKNİK ÜNİVERSİTESİ*
+- *Okul Adı: BURSA TEKNİK ÜNİVERSİTESİ*
