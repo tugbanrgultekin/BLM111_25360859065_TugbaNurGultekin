@@ -51,7 +51,7 @@ printf("7. Basit Sarkac Periyodu Deneyi\n");
 printf("8. Sabit Ip Gerilmesi Deneyi\n");
 printf("9. Asansor Deneyi\n");
 
-printf("Merhaba %s yukarida verilen deneylerden birini secebilirsin:",isim);
+printf("Merhaba %s yukarida verilen deneylerden birini secebilirsin (-1 programdan cikis):",isim);
 scanf("%d",&secenek);
 
 switch(secenek){
@@ -61,6 +61,8 @@ case 1:
     printf("\n***Serbest Dusme Deneyi***\n");
     printf("\nSure degeri giriniz:",isim);
     scanf("%f",&sure);
+    sure < 0 ? sure = -sure : sure;
+
 
     serbest_dusme_d(sure);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -72,6 +74,8 @@ case 2:
     printf("\n***Yukari Atis Deneyi***\n");
     printf("\nIlk hiz degerini giriniz:",isim);
     scanf("%f",&ilk_hiz);
+    ilk_hiz < 0 ? ilk_hiz = -ilk_hiz : ilk_hiz;
+
 
     yukari_atis_d(ilk_hiz);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -83,7 +87,7 @@ case 3:
     printf("\n***Agirlik Deneyi***\n");
     printf("\nKutle degerini giriniz:",isim);
     scanf("%f",&kutle);
-    kutle<0 ? kutle=-kutle : kutle;
+    kutle < 0 ? kutle = -kutle : kutle;
 
     agirlik_d(kutle);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -98,7 +102,7 @@ case 4:
     kutle<0 ? kutle=-kutle : kutle;
     printf("\nYukseklik degerini giriniz:");
     scanf("%f",&yukseklik);
-    yukseklik<0 ? yukseklik=-yukseklik : yukseklik;
+    yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
     kutlecekim_potansiyel_d(kutle,yukseklik);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -110,12 +114,12 @@ case 5:
     printf("\n***Hidrostatik Basinc Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:",isim);
     scanf("%f",&birim_hacim_kutle);
-    birim_hacim_kutle<0 ? birim_hacim_kutle=-birim_hacim_kutle : birim_hacim_kutle;
+    birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
     printf("\nYukseklik degerini giriniz:",isim);
     scanf("%f",&yukseklik);
-    yukseklik<0 ? yukseklik=-yukseklik : yukseklik;
+    yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
-    arsimet_kaldirma_kuvveti_d(birim_hacim_kutle,hacim);
+    hidrostatik_basinc_d(birim_hacim_kutle,yukseklik);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
 
     break;
@@ -125,10 +129,10 @@ case 6:
     printf("\n***Arsimet Kaldirma Kuvveti Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:",isim);
     scanf("%f",&birim_hacim_kutle);
-    birim_hacim_kutle<0 ? birim_hacim_kutle=-birim_hacim_kutle : birim_hacim_kutle;
+    birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
     printf("\nHacim degerini giriniz:",isim);
     scanf("%f",&hacim);
-    hacim<0 ? hacim=-hacim : hacim;
+    hacim < 0 ? hacim = -hacim : hacim;
 
     arsimet_kaldirma_kuvveti_d(birim_hacim_kutle,hacim);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -140,7 +144,7 @@ case 7:
     printf("\n***Basit Sarkac Periyodu Deneyi***\n");
     printf("\nUzunluk degerini giriniz:",isim);
     scanf("%f",&uzunluk);
-    uzunluk<0 ? uzunluk=-uzunluk : uzunluk;
+    uzunluk < 0 ? uzunluk = -uzunluk : uzunluk;
 
     basit_sarkac_periyodu_d(uzunluk);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -152,7 +156,7 @@ case 8:
     printf("\n***Sabit Ip Gerilmesi Deneyi***\n");
     printf("\nKutle degerini giriniz:",isim);
     scanf("%f",&kutle);
-    kutle<0 ? kutle=-kutle : kutle;
+    kutle < 0 ? kutle = -kutle : kutle;
 
     sabit_ip_gerilmesi_d(kutle);
     printf("Deneyi Yapan Bilim Insani:%s\n",isim);
@@ -164,8 +168,8 @@ case 9:
     printf("\n***Asansor Deneyi***\n");
     printf("\nKutle degerini giriniz:",isim);
     scanf("%f",&kutle);
-    kutle<0 ? kutle=-kutle : kutle;
-    printf("\nIvme degerini giriniz (asansor yukari yonde hareket ediyorsa '+', asagi yonde hareket ediyorsa '-'):",isim);
+    kutle < 0 ? kutle = -kutle : kutle;
+    printf("\nIvme degerini giriniz:",isim);
     scanf("%f",&ivme);
 
     asansor_d(kutle,ivme);
@@ -185,81 +189,81 @@ return 0;
 }
 
 
-void serbest_dusme_d(float sure){
+void serbest_dusme_d(float t){
 
     for(int i=0; i<8; i++){
-    float yukseklik= *(yercekimi_ivmesi+i) * sure * sure *0.5;
+    float yukseklik= *(yercekimi_ivmesi+i) * t * t *0.5;
     printf("%s icin deney sonucu:%.2f Metre\n ",*(gezegenler+i),yukseklik);
     }
 
 }
 
-void yukari_atis_d(float ilk_hiz){
-    
+void yukari_atis_d(float v0){
+
     for(int i=0; i<8; i++){
-    float max_yukseklik=(ilk_hiz * ilk_hiz) * 0.5 / *(yercekimi_ivmesi+i);
-    printf("%s icin deney sonucu:%.2f Metre\n ",*(gezegenler+i),max_yukseklik);
+        float max_yukseklik=(v0 * v0) * 0.5 / *(yercekimi_ivmesi+i);
+        printf("%s icin deney sonucu:%.2f Metre\n ",*(gezegenler+i),max_yukseklik);
     }
-    
+
 }
 
-void agirlik_d(float){
-    
+void agirlik_d(float m){
+
      for(int i=0; i<8; i++){
-        float agirlik = *(yercekimi_ivmesi+i) * kutle;
-        printf("%s icin deney sonucu:%.2f Newton\n",(gezegenler+i),agirlik);
+        float cisim_agirlik = *(yercekimi_ivmesi+i) * m;
+        printf("%s icin deney sonucu:%.2f Newton\n",(gezegenler+i),cisim_agirlik);
      }
-     
+
 }
 
-void kutlecekim_potansiyel_d(float kutle, float yukseklik){
-    
+void kutlecekim_potansiyel_d(float m, float h){
+
     for(int i=0; i<8; i++){
-    float kutlesel_pot_enerji = *(yercekimi_ivmesi +i)* kutle * yukseklik;
-    printf("%s icin deney sonucu:%.2f Joule\n",*(gezegenler+i),kutlesel_pot_enerji);
+        float kutlesel_pot_enerji = *(yercekimi_ivmesi +i)* m * h;
+        printf("%s icin deney sonucu:%.2f Joule\n",*(gezegenler+i),kutlesel_pot_enerji);
     }
-    
+
 }
 
-void hidrostatik_basinc_d(float birim_hacim_kutle, float yukseklik){
-    
+void hidrostatik_basinc_d(float rho, float h){
+
     for(int i=0; i<8; i++){
-        float hidrostatik_basinc= *(yercekimi_ivmesi+i) * birim_hacim_kutle * yukseklik;
+        float hidrostatik_basinc= *(yercekimi_ivmesi+i) * rho * h;
         printf("%s icin deney sonucu:%.2f Pascal\n",*(gezegenler+i),hidrostatik_basinc);
     }
-    
+
 }
 
-void arsimet_kaldirma_kuvveti_d(float birim_hacim_kutle, float hacim){
-    
+void arsimet_kaldirma_kuvveti_d(float rho, float V){
+
     for(int i=0; i<8; i++){
-        float kaldirma_kuvveti= *(yercekimi_ivmesi+i) * birim_hacim_kutle * hacim;
+        float kaldirma_kuvveti= *(yercekimi_ivmesi+i) * rho * V;
         printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),kaldirma_kuvveti);
     }
-    
+
 }
-void basit_sarkac_periyodu_d(float uzunluk){
-    
+void basit_sarkac_periyodu_d(float L){
+
      for(int i=0; i<8; i++){
-        float gecen_sure=2*PI*sqrt(uzunluk/ *(yercekimi_ivmesi+i));
+        float gecen_sure=2*PI*sqrt(L/ *(yercekimi_ivmesi+i));
         printf("%s icin deney sonucu:%.2f Saniye\n",*(gezegenler+i),gecen_sure);
      }
-     
+
 }
 
-void sabit_ip_gerilmesi_d(float kutle){
-    
+void sabit_ip_gerilmesi_d(float m){
+
     for(int i=0; i<8; i++){
-        float gerilme_kuvveti=*(yercekimi_ivmesi+i)*kutle;
+        float gerilme_kuvveti = *(yercekimi_ivmesi+i) * m;
         printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),gerilme_kuvveti);
     }
-    
+
 }
-void asansor_d(float kutle, float ivme){
-    
+void asansor_d(float m, float a){
+
     for(int i=0; i<8; i++){
-        float etkin_agirlik=kutle*(*(yercekimi_ivmesi+i)+ivme);
+        float etkin_agirlik = a >= 0 ? m * (*(yercekimi_ivmesi+i) + a) : m * (*(yercekimi_ivmesi+i) - (-a));
+
         printf("%s icin deney sonucu:%.2f Newton\n",*(gezegenler+i),etkin_agirlik);
     }
-    
 }
