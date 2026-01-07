@@ -100,9 +100,11 @@ case 3:
 case 4:
 
     printf("\n***Kutlecekimsel Potansiyel Enerji Deneyi***\n");
-    printf("Kutle degerini giriniz:");
+    printf("\nKutle degerini giriniz:");
     scanf("%f",&kutle);
+    
     kutle<0 ? kutle=-kutle : kutle;
+    
     printf("\nYukseklik degerini giriniz:");
     scanf("%f",&yukseklik);
 
@@ -119,7 +121,9 @@ case 5:
     printf("\n***Hidrostatik Basinc Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:");
     scanf("%f",&birim_hacim_kutle);
+    
     birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
+    
     printf("\nYukseklik degerini giriniz:");
     scanf("%f",&yukseklik);
 
@@ -136,7 +140,9 @@ case 6:
     printf("\n***Arsimet Kaldirma Kuvveti Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:");
     scanf("%f",&birim_hacim_kutle);
+    
     birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
+    
     printf("\nHacim degerini giriniz:");
     scanf("%f",&hacim);
 
