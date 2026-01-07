@@ -31,7 +31,7 @@ int main()
 {
 char isim[50];
 
-printf("---DENEY HESAPLAMALARI PROGRAMI---\n");
+printf("----DENEY HESAPLAMALARI PROGRAMI----\n");
 printf("Deney Hesaplamalari Programina Hosgeldiniz\n");
 
 printf("Adiniz nedir?:");
@@ -40,7 +40,7 @@ isim[strcspn(isim, "\n")] = '\0';
 
 
 do{
-printf("\n----YAPILMASI GEREKEN DENEYLER LISTESI----\n");
+printf("\n---YAPILMASI GEREKEN DENEYLER LISTESI---\n");
 printf("1. Serbest Dusme Deneyi\n");
 printf("2. Yukari Atis Deneyi\n");
 printf("3. Agirlik Deneyi\n");
@@ -51,7 +51,7 @@ printf("7. Basit Sarkac Periyodu Deneyi\n");
 printf("8. Sabit Ip Gerilmesi Deneyi\n");
 printf("9. Asansor Deneyi\n");
 
-printf("Yukarida verilen deneylerden sonucunu hesaplamak istedigini sec.(-1 programdan cikis):",isim);
+printf("\nYukarida verilen deneylerden sonucunu hesaplamak istedigini sec.(-1 programdan cikis):",isim);
 scanf("%d",&secenek);
 
 switch(secenek){
@@ -63,9 +63,9 @@ case 1:
     scanf("%f",&sure);
     sure < 0 ? sure = -sure : sure;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     serbest_dusme_d(sure);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -77,9 +77,9 @@ case 2:
 
     ilk_hiz < 0 ? ilk_hiz = -ilk_hiz : ilk_hiz;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     yukari_atis_d(ilk_hiz);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -91,9 +91,9 @@ case 3:
 
     kutle < 0 ? kutle = -kutle : kutle;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     agirlik_d(kutle);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -108,9 +108,9 @@ case 4:
 
     yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     kutlecekim_potansiyel_d(kutle,yukseklik);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -125,9 +125,9 @@ case 5:
 
     yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     hidrostatik_basinc_d(birim_hacim_kutle,yukseklik);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -142,9 +142,9 @@ case 6:
 
     hacim < 0 ? hacim = -hacim : hacim;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     arsimet_kaldirma_kuvveti_d(birim_hacim_kutle,hacim);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -156,9 +156,9 @@ case 7:
 
     uzunluk < 0 ? uzunluk = -uzunluk : uzunluk;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     basit_sarkac_periyodu_d(uzunluk);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -170,9 +170,9 @@ case 8:
 
     kutle < 0 ? kutle = -kutle : kutle;
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     sabit_ip_gerilmesi_d(kutle);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -187,9 +187,9 @@ case 9:
     printf("\nIvme degerini giriniz:");
     scanf("%f",&ivme);
 
-    printf("Deneyi Yapan Bilim Insani:%s\n",isim);
-
     asansor_d(kutle,ivme);
+
+    printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
     break;
 
@@ -279,7 +279,6 @@ void asansor_d(float m, float a){
 
     for(int i=0; i<8; i++){
         float etkin_agirlik = a >= 0 ? m * (*(yercekimi_ivmesi+i) + a) : m * (*(yercekimi_ivmesi+i) - (-a));
-
         printf("%s icin hissedilen agirlik %.2f Newton\n",*(gezegenler+i),etkin_agirlik);
     }
 }
