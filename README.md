@@ -3,6 +3,6 @@
 - *Numara: 25360859065*
 - *Bölüm: Bilgisayar Mühendisliği*
 - *Ders Adı: Algoritma ve Programlama* 
-- *Öğretim Üyesi: Dç. Dr. Ergün Gümüş*
+- *Öğretim Üyesi: Doç. Dr. Ergün Gümüş*
 - *Proje Konusu: Deney Hesaplamaları Programı*
 - *Okul Adı: BURSA TEKNİK ÜNİVERSİTESİ*
