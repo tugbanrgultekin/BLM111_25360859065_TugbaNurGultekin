@@ -32,4 +32,6 @@ Programda yer alan hesaplamalar, fonksiyonel programlama yaklaşımı benimsener
 
 
 ## Kullanılan Sabitler
-- **PI (π)** değeri, basit sarkaç periyodu deneyinde kullanılmak üzere `#define` direktifi ile sabitlenmiştir. ```c #define PI 3.1415
+- **PI (π)** değeri, basit sarkaç periyodu deneyinde kullanılmak üzere `#define` direktifi ile sabitlenmiştir. 
+```c
+- #define PI 3.1415
