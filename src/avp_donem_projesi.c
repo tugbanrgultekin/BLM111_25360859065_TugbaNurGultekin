@@ -4,20 +4,24 @@
 #include <string.h>
 #define PI 3.1415
 
-int secenek;
-void serbest_dusme_d(float);
-void yukari_atis_d(float);
-void agirlik_d(float);
-void kutlecekim_potansiyel_d(float, float);
-void hidrostatik_basinc_d(float, float);
-void arsimet_kaldirma_kuvveti_d(float, float);
-void basit_sarkac_periyodu_d(float);
-void sabit_ip_gerilmesi_d(float);
-void asansor_d(float, float);
+void serbest_dusme_d(float, float *, char [][9]);
+void yukari_atis_d(float, float *, char [][9]);
+void agirlik_d(float, float *, char [][9]);
+void kutlecekim_potansiyel_d(float, float, float *, char [][9]);
+void hidrostatik_basinc_d(float, float, float *, char [][9]);
+void arsimet_kaldirma_kuvveti_d(float, float, float *, char [][9]);
+void basit_sarkac_periyodu_d(float, float *, char [][9]);
+void sabit_ip_gerilmesi_d(float, float *, char [][9]);
+void asansor_d(float, float, float *, char [][9]);
+
+
+int main()
+{
 
 float yercekimi_ivmesi[8]={3.7,8.87,9.8,3.7,25.8,10.44,8.69,11.15};
 char gezegenler[8][9]={"Merkur", "Venus", "Dunya", "Mars", "Jupiter", "Saturn", "Uranus", "Neptun"};
 
+int secenek;
 float sure;
 float ilk_hiz;
 float kutle;
@@ -27,8 +31,6 @@ float hacim;
 float uzunluk;
 float ivme;
 
-int main()
-{
 char isim[50];
 
 printf("----DENEY HESAPLAMALARI PROGRAMI----\n");
@@ -51,7 +53,7 @@ printf("7. Basit Sarkac Periyodu Deneyi\n");
 printf("8. Sabit Ip Gerilmesi Deneyi\n");
 printf("9. Asansor Deneyi\n");
 
-printf("\nYukarida verilen deneylerden sonucunu hesaplamak istedigini sec.(-1 programdan cikis):",isim);
+printf("\nYukarida verilen deneylerden sonucunu hesaplamak istedigini sec.(-1 programdan cikis):");
 scanf("%d",&secenek);
 
 switch(secenek){
@@ -63,7 +65,7 @@ case 1:
     scanf("%f",&sure);
     sure < 0 ? sure = -sure : sure;
 
-    serbest_dusme_d(sure);
+    serbest_dusme_d(sure, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -77,7 +79,7 @@ case 2:
 
     ilk_hiz < 0 ? ilk_hiz = -ilk_hiz : ilk_hiz;
 
-    yukari_atis_d(ilk_hiz);
+    yukari_atis_d(ilk_hiz, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -91,7 +93,7 @@ case 3:
 
     kutle < 0 ? kutle = -kutle : kutle;
 
-    agirlik_d(kutle);
+    agirlik_d(kutle, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -102,15 +104,15 @@ case 4:
     printf("\n***Kutlecekimsel Potansiyel Enerji Deneyi***\n");
     printf("\nKutle degerini giriniz:");
     scanf("%f",&kutle);
-    
+
     kutle<0 ? kutle=-kutle : kutle;
-    
+
     printf("\nYukseklik degerini giriniz:");
     scanf("%f",&yukseklik);
 
     yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
-    kutlecekim_potansiyel_d(kutle,yukseklik);
+    kutlecekim_potansiyel_d(kutle, yukseklik, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -121,15 +123,15 @@ case 5:
     printf("\n***Hidrostatik Basinc Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:");
     scanf("%f",&birim_hacim_kutle);
-    
+
     birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
-    
+
     printf("\nYukseklik degerini giriniz:");
     scanf("%f",&yukseklik);
 
     yukseklik < 0 ? yukseklik = -yukseklik : yukseklik;
 
-    hidrostatik_basinc_d(birim_hacim_kutle,yukseklik);
+    hidrostatik_basinc_d(birim_hacim_kutle,yukseklik, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -140,15 +142,15 @@ case 6:
     printf("\n***Arsimet Kaldirma Kuvveti Deneyi***\n");
     printf("\nSivinin birim hacimdeki kutle degerini giriniz:");
     scanf("%f",&birim_hacim_kutle);
-    
+
     birim_hacim_kutle < 0 ? birim_hacim_kutle = -birim_hacim_kutle : birim_hacim_kutle;
-    
+
     printf("\nHacim degerini giriniz:");
     scanf("%f",&hacim);
 
     hacim < 0 ? hacim = -hacim : hacim;
 
-    arsimet_kaldirma_kuvveti_d(birim_hacim_kutle,hacim);
+    arsimet_kaldirma_kuvveti_d(birim_hacim_kutle,hacim, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -162,7 +164,7 @@ case 7:
 
     uzunluk < 0 ? uzunluk = -uzunluk : uzunluk;
 
-    basit_sarkac_periyodu_d(uzunluk);
+    basit_sarkac_periyodu_d(uzunluk, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -176,7 +178,7 @@ case 8:
 
     kutle < 0 ? kutle = -kutle : kutle;
 
-    sabit_ip_gerilmesi_d(kutle);
+    sabit_ip_gerilmesi_d(kutle, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -193,7 +195,7 @@ case 9:
     printf("\nIvme degerini giriniz:");
     scanf("%f",&ivme);
 
-    asansor_d(kutle,ivme);
+    asansor_d(kutle,ivme, yercekimi_ivmesi, gezegenler);
 
     printf("\n==Deneyi Yapan Bilim Insani:%s==\n\n",isim);
 
@@ -201,7 +203,7 @@ case 9:
 
 default:
 
-    printf("\nGecersiz secim\n");
+    printf("\nLutfen listedeki degerlerden birini giriniz.\n");
 
     break;
 }
@@ -211,7 +213,7 @@ return 0;
 }
 
 
-void serbest_dusme_d(float t){
+void serbest_dusme_d(float t, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
     float yukseklik= *(yercekimi_ivmesi+i) * t * t *0.5;
@@ -220,7 +222,7 @@ void serbest_dusme_d(float t){
 
 }
 
-void yukari_atis_d(float v0){
+void yukari_atis_d(float v0, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float max_yukseklik=(v0 * v0) * 0.5 / *(yercekimi_ivmesi+i);
@@ -229,7 +231,7 @@ void yukari_atis_d(float v0){
 
 }
 
-void agirlik_d(float m){
+void agirlik_d(float m, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
      for(int i=0; i<8; i++){
         float cisim_agirlik = *(yercekimi_ivmesi+i) * m;
@@ -238,7 +240,7 @@ void agirlik_d(float m){
 
 }
 
-void kutlecekim_potansiyel_d(float m, float h){
+void kutlecekim_potansiyel_d(float m, float h, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float kutlesel_pot_enerji = *(yercekimi_ivmesi +i)* m * h;
@@ -247,7 +249,7 @@ void kutlecekim_potansiyel_d(float m, float h){
 
 }
 
-void hidrostatik_basinc_d(float rho, float h){
+void hidrostatik_basinc_d(float rho, float h, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float hidrostatik_basinc= *(yercekimi_ivmesi+i) * rho * h;
@@ -256,7 +258,7 @@ void hidrostatik_basinc_d(float rho, float h){
 
 }
 
-void arsimet_kaldirma_kuvveti_d(float rho, float V){
+void arsimet_kaldirma_kuvveti_d(float rho, float V, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float kaldirma_kuvveti= *(yercekimi_ivmesi+i) * rho * V;
@@ -264,7 +266,8 @@ void arsimet_kaldirma_kuvveti_d(float rho, float V){
     }
 
 }
-void basit_sarkac_periyodu_d(float L){
+
+void basit_sarkac_periyodu_d(float L, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
      for(int i=0; i<8; i++){
         float gecen_sure=2*PI*sqrt(L/ *(yercekimi_ivmesi+i));
@@ -273,7 +276,7 @@ void basit_sarkac_periyodu_d(float L){
 
 }
 
-void sabit_ip_gerilmesi_d(float m){
+void sabit_ip_gerilmesi_d(float m, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float gerilme_kuvveti = *(yercekimi_ivmesi+i) * m;
@@ -281,7 +284,8 @@ void sabit_ip_gerilmesi_d(float m){
     }
 
 }
-void asansor_d(float m, float a){
+
+void asansor_d(float m, float a, float *yercekimi_ivmesi, char (*gezegenler)[9]){
 
     for(int i=0; i<8; i++){
         float etkin_agirlik = a >= 0 ? m * (*(yercekimi_ivmesi+i) + a) : m * (*(yercekimi_ivmesi+i) - (-a));
